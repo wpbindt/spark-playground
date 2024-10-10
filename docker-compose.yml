@@ -3,14 +3,11 @@ x-spark: &x-spark
   networks:
     - spark_network
 
-x-spark-master-uri: &x-spark-master-uri
-  SPARK_MASTER: spark://spark-master:7077
-
 x-worker: &x-worker
   <<: *x-spark
   environment:
     SPARK_MODE: worker
-    <<: *x-spark-master-uri
+    SPARK_MASTER: spark://spark-master:7077
   depends_on:
     - spark-master
 
@@ -20,9 +17,6 @@ services:
 
   spark-driver:
     <<: *x-spark
-    environment:
-      SPARK_MODE: driver
-      <<: *x-spark-master-uri
     command: ["/bin/bash", "-c", "/opt/bitnami/spark/sbin/start-connect-server.sh --master spark://spark-master:7077 --packages org.apache.spark:spark-connect_2.12:3.5.1"]
     depends_on:
       - spark-master

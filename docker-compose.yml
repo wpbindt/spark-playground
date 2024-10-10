@@ -42,3 +42,4 @@ services:
 
 networks:
   spark_network:
+    name: spark_network

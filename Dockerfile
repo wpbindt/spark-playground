@@ -1,5 +1,7 @@
-FROM python:3.12
+FROM spark:python3
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install --target /opt/spark/python/lib/site-packages -r requirements.txt
+
+ENV PYTHONPATH=/opt/spark/python/lib/site-packages

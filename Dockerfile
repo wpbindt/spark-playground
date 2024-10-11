@@ -5,3 +5,5 @@ RUN pip install -r requirements.txt
 
 COPY entrypoint.py .
 ENTRYPOINT ["python", "-i", "entrypoint.py"]
+
+WORKDIR /srv

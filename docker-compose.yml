@@ -1,5 +1,5 @@
 x-spark: &x-spark
-  image: bitnami/spark
+  image: bitnami/spark:3.5.1
   networks:
     - spark_network
 

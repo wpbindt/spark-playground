@@ -1,7 +1,7 @@
 .PHONY: image
 image:
-	docker build -t main .
+	docker build -t driver .
 
 .PHONY: driver
 driver: image
-	docker run -it --network spark_network main python -i entrypoint.py
+	docker run -it --network spark_network driver
